@@ -83,7 +83,7 @@ class ChartAudioImpl : ChartAudio {
         return ((MAX_FREQUENCY - MIN_FREQUENCY) * progress) + MIN_FREQUENCY
     }
 
-    fun dispose() {
+    override fun dispose() {
         timer?.cancel()
     }
 
@@ -127,4 +127,10 @@ interface ChartAudio {
      * Sets the range of data
      */
     fun setRange(range: Pair<Double, Double>)
+
+    /**
+     * Stop all audio and dispose
+     */
+
+    fun dispose()
 }

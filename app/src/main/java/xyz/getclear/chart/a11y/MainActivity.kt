@@ -1,9 +1,12 @@
 package xyz.getclear.chart.a11y
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
 import android.os.Bundle
+import android.view.accessibility.AccessibilityManager
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.github.lib.ChartAudio
 import com.github.lib.ChartAudioImpl
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
@@ -15,9 +18,14 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 
 class MainActivity : AppCompatActivity() {
 
-    val chartAudio by lazy {
-        ChartAudioImpl()
+    val chartAudio: ChartAudio by lazy {
+        if (isAccessibilityMode()) {
+            ChartAudioImpl()
+        } else {
+            MockChartAudio()
+        }
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,4 +74,7 @@ class MainActivity : AppCompatActivity() {
         val max = entries.maxBy { entry -> entry.y }?.x!!.toDouble()
         return Pair(min, max)
     }
+
+    private fun isAccessibilityMode() =
+        (getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager).isEnabled
 }

@@ -1,5 +1,6 @@
 package xyz.getclear.chart.a11y
 
+import com.github.lib.ChartAudio
 import com.github.mikephil.charting.data.Entry
 
 val sampleData = listOf(
@@ -23,3 +24,18 @@ val sampleData = listOf(
     Entry(45.0f, 3.0f),
     Entry(51.0f, 4.5f)
 )
+
+
+class MockChartAudio : ChartAudio {
+    override fun onPointFocused(newY: Double) {
+    }
+
+    override fun playSummary(points: List<Double>) {
+    }
+
+    override fun setRange(range: Pair<Double, Double>) {
+    }
+
+    override fun dispose() {
+    }
+}

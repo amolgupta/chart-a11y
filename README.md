@@ -12,6 +12,7 @@ For an example usage with `MpAndroidChart` see `MainActivity.kt`
 
 - Step 1:
 Initialize a `ChartAudio` object in you class which contains the chart view.
+
 ```
     val chartAudio by lazy {
         ChartAudioImpl()
@@ -20,12 +21,14 @@ Initialize a `ChartAudio` object in you class which contains the chart view.
 
 - Step 2:
 Tell the `chartAudio` object about the range of data it should expect
+
 ```
     chartAudio.setRange(Pair(min,max))
 ```
 
 
 - Step 3:
+
 Set a touch listener on the chart to play a sound when a particular value is selected
 
 ```
@@ -33,6 +36,7 @@ Set a touch listener on the chart to play a sound when a particular value is sel
 ```
 
 - Optional Step 4:
+
 To play a complete summary, pass the complete data set to this function
 
 ```
@@ -40,6 +44,8 @@ To play a complete summary, pass the complete data set to this function
 ```
 
 - Step 5:
+
 To play only in accessibility mode, add this check:
 ```
+(getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager).isEnabled
 ```
