@@ -8,6 +8,8 @@ This library is inspired by the charts feature on [Yahoo Finance app](https://pl
 
 To install copy the `ChartAudio.kt` file into your project.
 
+It can also be added as a gradle dependency using [jitpack](https://jitpack.io/#amolgupta/chart-a11y).
+
 ### Usage
 For an example usage with `MpAndroidChart` see `MainActivity.kt`
 
